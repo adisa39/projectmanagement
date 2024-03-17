@@ -24,8 +24,8 @@ from tasks.views import TaskViewSet
 
 # Create a router and register our viewsets with it
 router = DefaultRouter()
-router.register(r'projects', ProjectViewSet)
-router.register(r'tasks', TaskViewSet)
+router.register(r'projects', ProjectViewSet, basename='project')
+router.register(r'tasks', TaskViewSet, basename='task')
 
 
 urlpatterns = [
