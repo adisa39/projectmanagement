@@ -1,0 +1,153 @@
+:root {
+    --color1: ##eeebfe;
+    --light-grey: #f5f6f7;
+}
+
+body {
+    background: linear-gradient(135deg, #ffffff, #bbdefb);
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; 
+    width: 220px; 
+    position: fixed; 
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--light-grey);
+    overflow-x: hidden; 
+    padding-top: 80px; 
+    padding-left: 20px;
+    padding-right: 30px;
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+  
+
+/* Hide the left menu by default */
+.sidenav_toggle {display: none;}
+
+/* Push the page content to the right when you open the side navigation */
+#main-container {
+    transition: margin-left .5s;
+    background-color: var(--light-grey);
+    /* padding: 20px; */
+    margin-left: 220px;
+    margin-top: 80px;
+  }
+
+nav.sidenav li a{
+    padding: 5px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+
+    i{
+        padding: 10px;
+    }
+}
+
+a:hover{
+    background-color: var(--color1);
+}
+
+a:active{
+    background-color: var(--color1);
+}
+
+.btn{
+    background-color: #f0eff5;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.btn:hover, button:hover{
+    background-color: var(--color1);
+}
+
+#project-section{
+    padding: 20px;
+    background-color: var(--light-grey);
+}
+
+#project-list{
+    margin-right: 300px;
+    /* background-color: grey; */
+}
+
+th, td{
+    font-weight: bold;
+    padding: 15px 0 15px 0;
+}
+td:first-child{
+    padding-left: 10px;
+}
+
+td:last-child{
+    padding-right: 10px;
+}
+
+td figcaption{
+    font-weight: normal;
+    font-size: smaller;
+}
+
+td img{
+    display: block;
+    margin-left: 5px;
+}
+
+tr:hover {background-color: var(--color1);}
+
+#event-list{
+    width: 300px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+    height: 100%;
+    background-color: var(--light-grey);
+}
+
+.title-1{
+    font-weight: bold;
+    font-size: large;
+    margin-block: 10px;
+    line-height: 2em;
+}
+
+.title-2{
+    font-weight: bold;
+    /* font-size: small; */
+    line-height: 2em;
+    color: #828282;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(185, 157, 157, 0.25) inset;
+  }
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    
+}
+
+@media (max-width: 768px) {
+    #project-list{margin-right: 200px;}
+    #event-list{width: 200px;}
+    #main-container {margin-left: 0px;}
+    .sidenav {display: none;}
+    .sidenav .closebtn, #sidenav_toggle {display: none;}
+      
+}
+
+@media (max-width: 640px) {
+    #project-list{margin-right: 150px;}
+    #event-list{width: 150px;}
+    #main-container {margin-left: 0px;}
+    .sidenav {display: none;}
+    .sidenav .closebtn, #sidenav_toggle {display: none;}
+      
+}

@@ -1,0 +1,302 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Other meta tags and styles -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body class="font-sans antialiased">
+    
+    <nav id="sidenav" class="sidenav">
+        <ul class="">
+            <li>Home</li>
+            <li>
+                <a href="{% url 'projects:index' %}" >
+                    <!-- Insert your menu icon here -->
+                    <i class="fas fa-toolbox"></i>Projects
+                </a>
+            </li>
+            <li>
+                <a href="#" >
+                    <!-- Insert your menu icon here -->
+                    <i class="fas fa-clipboard-check"></i>My Task
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-user-group"></i>Team
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-note-sticky"></i>File
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-calendar"></i>Calendar
+                </a>
+            </li>
+            <li class="mt-4">
+                Insights
+            </li>
+            <li class="mb-16">
+                <a href="#" >
+                    <i class="fas fa-message"></i>Inbox
+                    <span class="bg-red-500 text-white rounded-full px-2 py-1 ml-auto">5</span>
+                </a>
+            </li>
+            
+        </ul>
+        <div class="flex items-center"><img class="rounded-full mr-2" src="#" /> Profile</div>
+    </nav>
+
+    <!-- Header section -->
+    <header class="">
+        <nav id="top-nav" class="flex items-center bg-white fixed right-0 left-3 lg:left-60 top-0 duration-150 " style="min-height: 80px;">
+            
+            <!-- Left toggled menu button -->
+            <button class="block btn mr-4" id="toggleLeftMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+    
+            <!-- Title -->
+            <h1 class="text-xl font-bold text-gray-800 hidden md:flex">My Projects</h1>
+            <!-- Show title only on screens larger than md -->
+            
+            <div class="flex flex-auto justify-content-stretch">
+                <!-- Search input -->
+                <div class="relative shadow-lg md:ml-6 w-full">
+                    <input type="search" id="search-input" placeholder="Search Project, task etc.." class="pl-3 py-2 pr-10 sm:pr-20 outline outline-offset-0 outline-white rounded-lg focus:outline-none focus:ring focus:border-blue-300 w-full">
+                    <button type="button" class="absolute inset-y-0 right-0 px-3 py-2 text-gray-600 rounded-r-lg flex items-center">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <!-- Filter button -->
+                <button class="px-3 py-1 bg-gray-800 text-white rounded-lg ml-4"><i class="fas fa-sliders text-white"></i></button>
+            
+                <!-- Add button -->
+                <button class="px-4 py-2 bg-sky-50 text-black rounded ml-4 text-lg">
+                    <i class="fa fa-plus-circle"></i>
+                </button>
+            </div>
+        </nav>
+    
+    </header>  
+
+    <!-- Content section -->
+    <main id="main-container" class="">
+        <!-- Main content -->
+        <div id="project-section" class="relative">
+            <!-- Projects List content -->
+            <section id="project-list" class="mr-32">
+                <!-- Filter Menu -->
+                <div>
+                    <div class="flex items-center">
+                        <a type="button" href="#" class="px-8 py-4 bg-gray-100 rounded-lg border-2 active:border-black"><i class="fas fa-bars-progress px-3"></i>List</a>
+                        <a href="#" class="px-8 py-4 bg-gray-100 rounded-lg border-2 active:border-black ml-3"><i class="fas fa-note-sticky px-3"></i>Board</a>
+
+                        <div class="ms-auto title-2">
+                            <label for="filter-by">Show</label>
+                            <select id="status-filter" name="filterBy" class="border-2 px-4 py-1.5 rounded-lg">
+                                <option value="all" selected>All</option>
+                                <option value="done" selected>Done Tasks</option>
+                                <option value="in_progress" selected>Tasks in Progress</option>
+                                <option value="todo" selected>To Do Tasks</option>
+                            </select>
+                        </div>
+                    </div>
+                    <figcaption class="py-4 text-sm">17 result found</figcaption>
+                </div>
+
+                <!-- Projects table -->
+                <div class="content-body">
+                    <table class="table-auto w-full border-separate border-spacing-y-4">
+                        <thead>
+                            <tr class="shadow-lg">
+                                <th></th>
+                                <th>Task name</th>
+                                <th>Due in</th>
+                                <th>Tasks</th>
+                                <th>Status</th>
+                                <th>Members</th>
+                                <th><th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+
+            <!-- Right Events content -->
+            <section id="event-list" class="fixed top-20 right-0 overflow-y-auto">
+                
+                <!-- Upcomming Meeting -->
+                <article>
+                    <div class="flex items-center">
+                        <h1 class="title-1">Upcoming meeting</h1>
+                        <a class="ms-auto title-2">See all</a>
+                    </div>
+                    <div class="bg-green-50 p-2 text-sm rounded-lg">
+                        <h5 class="title-1">Meeting Name</h5>
+                        <p class="mb-5">The meetings aim to identify areas for improvement and esnures the 
+                            design align with user needs and business goals.
+                        </p>
+                        <div class="shadow-lg bg-white rounded-lg px-2 py-4 text-smaller">
+                            <div class="flex">
+                                <figcaption class="">Time</figcaption>
+                                <span class="text-start ms-auto">Duration</span>
+                            </div>
+                            <div class="flex font-bold">
+                                <p>12:00-12:30</p>
+                                <span class="text-right ms-auto">30min</span>
+                            </div>
+                            <div class="py-4">
+                                <figcaption class="mb-5">Invited member</figcaption>
+                                <img src="#" alt="">
+                                <img src="#" alt="">
+                                <img src="#" alt="">
+                                <div class="bg-red-100 py-2 px-2 inline rounded-full text-white">+3</div>
+                            </div>
+                            <div class="flex justify-center">
+                                <a href="#" class="btn rounded-lg text-white px-8 bg-indigo-500">Join Meeting</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </article>
+                <article class="p-3">                    
+                    <h4 class="title-1">Upcoming Task</h4>
+                    <div class="p-2 shadow-lg text-sm rounded-lg title-2">
+                        <div class="flex items-center relative">
+                            <i class="fas fa-ellipsis-vertical absolute top-1 right-0"></i>
+                            <h6 class="title-2">Product Planning</h6>
+                            <figcaption class="bg-yellow-50 text-red px-2 ms-auto">status</figcaption>
+                            
+                        </div>
+                        <div>                    
+                            <div class="flex items-center py-2">
+                                <img src="#" />
+                                <img src="#" />
+                                <img src="#" />
+                                <div class="bg-red-100 py-1 px-1 inline rounded-full text-white text-smaller">+3</div>
+                            
+                            </div>
+                            <div class="flex items-center">
+                                <progress max="100" value="80"></progress>
+                                <span class="ms-auto">10:00 - 11:00</span>
+                            </div>
+                            <figcaption class="py-2">Management</figcaption>
+                        </div>
+                    </div>
+                </article>
+                
+            </section>
+        </div>
+    </main>
+
+
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <script>
+        const loadMembers = (members) => {
+            var profile_pics = "";
+            for (let i = 0; i < 3 && i < members.length; i++) {
+                profile_pics += `<span>${members[i].username}</span>`;
+            };
+            return profile_pics;
+        };
+
+        const loadProjects = (data) => {
+            console.log(data);
+            // Clear existing content
+            $('#project-section .content-body table tbody').empty();
+            
+            // Iterate over each project in the response
+            data.forEach((project) => {
+                // Calculate remaining time
+                let dueDate = new Date(project.due_date);
+                let currentDate = new Date();
+                let timeDifference = dueDate - currentDate;
+                let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    
+                // Create a new row for each project
+                var row = $(`
+                    <tr class="shadow-lg">
+                        <td><img src="${project.brand_logo}"></td>
+                        <td>${project.title}<br /><figcaption>${project.created_at.split('T')[0]}</figcaption></td>
+                        <td>${days}d, ${hours}h, ${minutes}m</td>
+                        <td>${project.done_count}/${project.tasks_count}<br /><figcaption>Tasks</figcaption></td>
+                        <td>${project.done_count} Progress<br /><figcaption><progress max="${project.task_count}" value="${project.done_count}"></progress></figcaption></td>
+                        <td><img src="">${loadMembers(project.assigned_to)}</td>
+                        <td><i class="fas fa-ellipsis-vertical"></i></td>
+                    </tr>
+                `);
+    
+                // Append the row to the content body
+                $('#project-section .content-body table tbody').append(row);
+            });
+        };
+    
+        $(document).ready(function() {
+            function fetchProjects(searchQuery, statusFilter) {
+                // Construct the API URL with search and status filter parameters
+                var apiUrl = '/api/projects/';
+                if (searchQuery) {
+                    apiUrl += `?search=${searchQuery}`;
+                }
+                if (statusFilter === 'all') {
+                    statusFilter = null;
+                }
+                if (statusFilter) {
+                    apiUrl += `${searchQuery ? '&' : '?'}status=${statusFilter}`;
+                }
+    
+                // Send a GET request to fetch projects
+                $.ajax({
+                    url: apiUrl,
+                    method: 'GET',
+                    success: loadProjects,
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching projects:', error);
+                    }
+                });
+            }
+    
+            // Function to handle search and filter inputs
+            function handleSearchAndFilter() {
+                var searchQuery = $('#search-input').val().trim();
+                var statusFilter = $('#status-filter').val();
+    
+                // Fetch projects with search and status filter parameters
+                fetchProjects(searchQuery, statusFilter);
+            }
+    
+            // Event listeners for search input and status filter select
+            $('#search-input').on('input', handleSearchAndFilter);
+            $('#status-filter').on('change', handleSearchAndFilter);
+    
+            // Initial fetch of projects when the page loads
+            fetchProjects();
+        });
+    </script>
+    
+    
+    
+</body>
+
+</html>
