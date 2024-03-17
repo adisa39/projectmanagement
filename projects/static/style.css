@@ -92,9 +92,11 @@ td figcaption{
     font-size: smaller;
 }
 
-td img{
-    display: block;
-    margin-left: 5px;
+td img {
+    width: 20px; 
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 tr:hover {background-color: var(--color1);}

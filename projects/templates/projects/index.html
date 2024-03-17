@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Other meta tags and styles -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -237,7 +238,7 @@
                 // Create a new row for each project
                 var row = $(`
                     <tr class="shadow-lg">
-                        <td><img src="${project.brand_logo}"></td>
+                        <td><img src="${project.brand_logo}" /></td>
                         <td>${project.title}<br /><figcaption>${project.created_at.split('T')[0]}</figcaption></td>
                         <td>${days}d, ${hours}h, ${minutes}m</td>
                         <td>${project.done_count}/${project.tasks_count}<br /><figcaption>Tasks</figcaption></td>
